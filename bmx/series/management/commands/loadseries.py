@@ -30,8 +30,10 @@ class Command(BaseCommand):
                 'Not found data for series in the date range'))
         # 
         for serie in data['bmx']['series']:
+            self.stdout.write(self.style.SUCCESS(serie))
             if serie['idSerie'] == settings.BMX_UDI_SERIE:
                 Udi.objects.insert_api_data(serie)
+                continue
             # save dollar
             Dollar.objects.insert_api_data(serie)
         self.stdout.write(self.style.SUCCESS('Success'))
