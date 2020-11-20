@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_cron',
     'series',
 ]
 
@@ -149,16 +150,9 @@ STATICFILES_DIR = [
     os.path.join(BASE_DIR, "static")
 ]
 
-# CELERY CONFIGURATION
-# https://docs.celeryproject.org/
-
-CELERY_BROKER_URL = env.get_value('BROKER_URL')
-CELERY_ACCEPT_CONTENT = ['application/json']
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_RESULT_SERIALIZER = 'json'
-CELERY_TIMEZONE = TIME_ZONE
-
-
+CRON_CLASSES = [
+    "series.cron.BmxCronJob",
+]
 
 # BMX
 # https://www.banxico.org.mx/SieAPIRest/service/v1/
