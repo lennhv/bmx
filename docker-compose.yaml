@@ -21,11 +21,11 @@ services:
         - POSTGRES_USER=${DB_USER}
         - POSTGRES_DB=${DB_NAME}
         - POSTGRES_PASSWORD=${DB_PASSWORD}
-  celery:
-    image: rabbitmq:3-management
-    ports:
-        - 5672:5672
-        - 8090:15672
-    environment:
-        - RABBITMQ_DEFAULT_USER=${RABBIT_USER}
-        - RABBITMQ_DEFAULT_PASS=${RABBIT_PASSWORD}
+  # celery:
+  #   image: rabbitmq:3-management
+  #   ports:
+  #       - 5672:5672
+  #       - 8090:15672
+  #   environment:
+  #       - RABBITMQ_DEFAULT_USER=${RABBIT_USER}
+  #       - RABBITMQ_DEFAULT_PASS=${RABBIT_PASSWORD}
