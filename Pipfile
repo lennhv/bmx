@@ -7,12 +7,12 @@ verify_ssl = true
 
 [packages]
 django = "*"
-celery = "*"
 django-environ = "*"
 mysqlclient = "*"
 pymysql = "*"
 psycopg2-binary = "*"
 requests = "*"
+django-cron = "*"
 
 [requires]
 python_version = "3.8"
