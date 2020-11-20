@@ -30,11 +30,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 SECRET_KEY = env.get_value('SECRET_KEY')
 if not SECRET_KEY:
     raise ValueError("SECRET_KEY is needed")
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool('DEBUG', default=False)
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -132,7 +131,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Mexico_City'
 
 USE_I18N = True
 
@@ -150,12 +149,22 @@ STATICFILES_DIR = [
     os.path.join(BASE_DIR, "static")
 ]
 
+# CELERY CONFIGURATION
+# https://docs.celeryproject.org/
+
+CELERY_BROKER_URL = env.get_value('BROKER_URL')
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = TIME_ZONE
+
+
 
 # BMX
 # https://www.banxico.org.mx/SieAPIRest/service/v1/
 
 BMX_ENDPOINT = 'https://www.banxico.org.mx/SieAPIRest/service'
-BMX_TOKEN = env.str("BMX_TOKEN", default=''),
+BMX_TOKEN = env.str("BMX_TOKEN", default='')
 BMX_UDI_SERIE = 'SP68257'
 # Tipo de cambio pesos por dólar E.U.A. Tipo de cambio para solventar obligaciones
 # denominadas en moneda extranjera Fecha de liquidación
